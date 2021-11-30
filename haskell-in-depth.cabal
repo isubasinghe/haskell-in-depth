@@ -27,6 +27,7 @@ library
   exposed-modules:
       CH5
       Lib
+      Vector
   other-modules:
       Paths_haskell_in_depth
   hs-source-dirs:
