@@ -10,7 +10,7 @@ data Vector (n :: Nat) (a :: *) where
 
 instance Show a => Show (Vector n a) where 
   show VNil = "VNil"
-  show (VCons a as) = "VCons" ++ show a ++ "(" ++ show as ++ ")"
+  show (VCons a as) = "VCons[" ++ show a ++ "](" ++ show as ++ ")"
 
 add :: Nat -> Nat -> Nat 
 add Zero n = n
@@ -18,5 +18,8 @@ add (Succ n) m = add n (Succ m)
 
 type family Add n m where 
   Add 'Zero n = n
-  Add ('Succ n) m = Add n ('Succ m)
+  Add ('Succ n) m = 'Succ (Add n m)
 
+append :: Vector n a -> Vector m a -> Vector (Add n m) a 
+append VNil xs = xs
+append (VCons a rest) xs = VCons a (append rest xs)
