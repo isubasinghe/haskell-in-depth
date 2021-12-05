@@ -26,6 +26,7 @@ source-repository head
 library
   exposed-modules:
       CH5
+      HList
       Lib
       Vector
   other-modules:
